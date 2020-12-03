@@ -29,10 +29,26 @@ void test_Slist()
 	assert(slist_lookup(list, 5) == 1);
 }
 
+void test_min_max()
+{
+	Slist s2= slist_new();
+	Slist *list1 = &s2;
+	assert(slist_length(list1) == 0);
+	list1 = slist_addnode_head(list1, 4);
+	list1 = slist_addnode_head(list1, 5);
+	list1 = slist_addnode_head(list1, 6);
+	list1 = slist_addnode_head(list1, 7);
+	assert(slist_length(list1) == 4);
+	assert(slist_max(list1) == 7);
+	assert(slist_min(list1) == 4);
+}
+
+
 int main()
 {
-	test_Slist();
-    /*printf("Hello World!");*/
+	//test_Slist();
+	test_min_max();
+
 	return 0;
 }
 

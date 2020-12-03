@@ -132,6 +132,38 @@ Slist* slist_delnode_tail(Slist *list)
 }
 
 
+// methods to find maximum and minimum elements in the list
+int32_t slist_max(const Slist *list)
+{
+	assert(list != NULL);
+	int32_t max = 0;
+	Node *cur = list->head;
+
+	for (cur = list->head; cur != NULL; cur = cur->next)
+	{
+		if (cur->data > max)
+		{
+			max = cur->data;
+		}
+	}
+	return max;
+}
+
+int32_t slist_min(const Slist *list)
+{
+	assert(list != NULL);
+	int32_t min = slist_max(list); // initialize with high value
+	Node *cur = list->head;
+
+	for (cur = list->head; cur != NULL; cur = cur->next)
+	{
+		if (cur->data < min)
+		{
+			min = cur->data;
+		}
+	}
+	return min;
+}
 
 
 
