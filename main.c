@@ -43,12 +43,26 @@ void test_min_max()
 	assert(slist_min(list1) == 4);
 }
 
+void test_addnode_mid()
+{
+	Slist s2= slist_new();
+	Slist *list1 = &s2;
+	assert(slist_length(list1) == 0);
+	list1 = slist_addnode_head(list1, 4);
+	list1 = slist_addnode_head(list1, 5);
+	//list1 = slist_addnode_head(list1, 6);
+	list1 = slist_addnode_head(list1, 7);
+	assert(slist_length(list1) == 3);
+	slist_addnode_middle(list1, 6, 2);
+	assert(slist_length(list1) == 4);
+	assert(slist_lookup(list1, 6) == 2);
+}
 
 int main()
 {
 	//test_Slist();
-	test_min_max();
-
+	//test_min_max();
+	test_addnode_mid();
 	return 0;
 }
 

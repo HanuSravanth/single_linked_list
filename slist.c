@@ -47,6 +47,32 @@ static Node* _get_new_node_ (int32_t val)
 	return newnode;
 }
 
+Slist* slist_addnode_middle(Slist *list, int32_t val, int32_t key)
+{
+	assert(list != NULL);
+	assert( key < slist_length(list));
+	Node *temp, *p;
+	int32_t i = 1;
+	Node *newnode = _get_new_node_(val);
+
+	p = list->head;
+	while (i < key) //traverse till the node after which newnode to be inserted
+	{
+		p = p->next;
+		i++;
+	}
+
+	temp->next = p->next;
+	p->next = temp;
+
+	++list->length;
+
+	assert( (list->length == 1) && (list->head == list->tail)  || // @suppress("Suggested parenthesis around expression")
+			(list->length > 1)  && (list->head != list->tail)  );
+
+	return list;
+}
+
 Slist* slist_addnode_head(Slist *list, int32_t val)
 {
 	assert(list != NULL);
